@@ -829,6 +829,7 @@ void SharedGroup::do_open(const std::string& path, bool no_create_file, bool is_
             File::UnmapGuard fug(m_file_map);
             SharedInfo* info_2 = m_file_map.get_addr();
             info_2->init_complete = 1;
+            m_file_map.sync();
         }
 
         // We hold the shared lock from here until we close the file!
